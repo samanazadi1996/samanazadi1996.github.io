@@ -11,8 +11,8 @@ if %errorlevel% neq 0 (
     exit /b %errorlevel%
 )
 
-REM Copy files using xcopy and check for errors
-xcopy ".\dist\my-resume\browser\" "..\.." /s /e /h /i
+REM Copy files using xcopy with the /y switch to overwrite existing files
+xcopy ".\dist\my-resume\browser\" "..\.." /s /e /h /i /y
 if %errorlevel% neq 0 (
     echo Copy failed!
     exit /b %errorlevel%
