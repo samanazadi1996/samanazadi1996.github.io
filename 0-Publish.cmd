@@ -12,7 +12,6 @@ set "minute=%datetime:~10,2%"
 :: Combine date and time for filename
 set "formatted_datetime=%year%-%month%-%day%_%hour%-%minute%"
 
-echo "Publish on %formatted_datetime%"
 :: Ask the user if they want to publish
 set /p userInput=Do you want to publish changes? (yes/no): 
 
