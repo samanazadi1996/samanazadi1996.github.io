@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
       "company": "Freelancer",
       "blog": "www.coffeete.ir",
       "location": "Iran - Tehran",
-      "email": null,
+      "email": "samanazadi1996@gmail.com",
       "hireable": null,
       "bio": ".Net Developer",
       "twitter_username": "Saman_Azadi_",
@@ -49,7 +49,8 @@ export class AppComponent implements OnInit {
       "followers": 42,
       "following": 29,
       "created_at": "2020-02-09T21:26:30Z",
-      "updated_at": "2024-07-22T12:11:33Z"
+      "updated_at": "2024-07-22T12:11:33Z",
+      "phoneNumber": "+98 91000000000",
     }
 
   ngOnInit(): void {
