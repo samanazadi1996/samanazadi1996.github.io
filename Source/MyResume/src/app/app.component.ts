@@ -18,39 +18,39 @@ export class AppComponent implements OnInit {
   userUrl = "https://api.github.com/users/samanazadi1996";
   profile =
     {
-      "login": "samanazadi1996",
-      "id": 60857846,
-      "node_id": "MDQ6VXNlcjYwODU3ODQ2",
-      "avatar_url": "https://avatars.githubusercontent.com/u/60857846?v=4",
-      "gravatar_id": "",
-      "url": "https://api.github.com/users/samanazadi1996",
-      "html_url": "https://github.com/samanazadi1996",
-      "followers_url": "https://api.github.com/users/samanazadi1996/followers",
-      "following_url": "https://api.github.com/users/samanazadi1996/following{/other_user}",
-      "gists_url": "https://api.github.com/users/samanazadi1996/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/samanazadi1996/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/samanazadi1996/subscriptions",
-      "organizations_url": "https://api.github.com/users/samanazadi1996/orgs",
-      "repos_url": "https://api.github.com/users/samanazadi1996/repos",
-      "events_url": "https://api.github.com/users/samanazadi1996/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/samanazadi1996/received_events",
-      "type": "User",
-      "site_admin": false,
-      "name": "Saman Azadi",
-      "company": "Freelancer",
-      "blog": "www.coffeete.ir",
-      "location": "Iran - Tehran",
-      "email": "samanazadi1996@gmail.com",
-      "hireable": null,
-      "bio": ".Net Developer",
-      "twitter_username": "Saman_Azadi_",
-      "public_repos": 25,
-      "public_gists": 0,
-      "followers": 42,
-      "following": 29,
-      "created_at": "2020-02-09T21:26:30Z",
-      "updated_at": "2024-07-22T12:11:33Z",
-      "phoneNumber": "+98 91000000000",
+      avatar_url: "https://avatars.githubusercontent.com/u/60857846?v=4",
+      name: "Saman Azadi",
+      blog: "www.coffeete.ir",
+      location: "Iran - Tehran",
+      email: "samanazadi1996@gmail.com",
+      bio: ".Net Developer",
+      twitter_username: "Saman_Azadi_",
+      phoneNumber: "+98 91000000000",
+      Desc: "I am a software engineer specializing in software development and design, with a passion for teamwork and experience in collaborative projects. I am eager to learn and apply cutting-edge technologies, continuously studying and improving my skills in the software field. I am dedicated and able to quickly adapt to the needs and challenges of leading companies in the industry. My goal is to provide creative solutions and contribute effectively to successful projects.",
+      skills: [
+        { name: "c#", progress: "100" },
+        { name: "html", progress: "80" },
+        { name: "css", progress: "100" },
+        { name: "js", progress: "100" },
+      ]
+      ,
+      workExperiences: [{
+        from: "2019", to: "2021",
+        name: "NikRastin Parsa",
+        achievements: [
+          "test 1",
+          "test 2",
+        ]
+      }, {
+        from: "2021", to: "2024",
+        name: "Sam Sirvan System",
+        achievements: [
+
+        ]
+      }
+
+      ],
+      Educations: null
     }
 
   ngOnInit(): void {
@@ -60,8 +60,8 @@ export class AppComponent implements OnInit {
     this.httpClient.request('GET', this.userUrl, { responseType: 'json' }).subscribe(
       (data: any) => {
         // Fill profile with the API response
-        this.profile.avatar_url = data.avatar_url,
-          this.profile.name = data.name;
+        this.profile.avatar_url = data.avatar_url;
+        this.profile.name = data.name;
         this.profile.location = data.location;
         this.profile.email = data.email;
         this.profile.bio = data.bio;

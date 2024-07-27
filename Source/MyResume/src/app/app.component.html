@@ -48,53 +48,14 @@
         <div class="title">
           <p class="bold">skill's</p>
         </div>
-        <ul>
-          <li>
-            <div class="skill_name">
-              HTML
+        <div>
+          <div>
+            <div class="skill skill_name"  *ngFor="let item of profile.skills">
+              {{item.name}}
             </div>
-            <div class="skill_progress">
-              <span style="width: 80%;"></span>
-            </div>
-            <div class="skill_per">80%</div>
-          </li>
-          <li>
-            <div class="skill_name">
-              CSS
-            </div>
-            <div class="skill_progress">
-              <span style="width: 70%;"></span>
-            </div>
-            <div class="skill_per">70%</div>
-          </li>
-          <li>
-            <div class="skill_name">
-              SASS
-            </div>
-            <div class="skill_progress">
-              <span style="width: 90%;"></span>
-            </div>
-            <div class="skill_per">90%</div>
-          </li>
-          <li>
-            <div class="skill_name">
-              JS
-            </div>
-            <div class="skill_progress">
-              <span style="width: 60%;"></span>
-            </div>
-            <div class="skill_per">60%</div>
-          </li>
-          <li>
-            <div class="skill_name">
-              JQUERY
-            </div>
-            <div class="skill_progress">
-              <span style="width: 88%;"></span>
-            </div>
-            <div class="skill_per">88%</div>
-          </li>
-        </ul>
+          </div>
+
+        </div>
       </div>
       <div class="resume_item resume_social">
         <div class="title">
@@ -146,54 +107,38 @@
       <div class="title">
         <p class="bold">About us</p>
       </div>
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis illo fugit officiis distinctio culpa
-        officia totam atque exercitationem inventore repudiandae?</p>
+      <p>{{profile.Desc}}</p>
     </div>
     <div class="resume_item resume_work">
       <div class="title">
         <p class="bold">Work Experience</p>
       </div>
       <ul>
-        <li>
-          <div class="date">2013 - 2015</div>
+        <li *ngFor="let item of profile.workExperiences;">
+          <div class="date">
+            {{item.from}} - {{item.to}}</div>
           <div class="info">
-            <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-          </div>
-        </li>
-        <li>
-          <div class="date">2015 - 2017</div>
-          <div class="info">
-            <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-          </div>
-        </li>
-        <li>
-          <div class="date">2017 - Present</div>
-          <div class="info">
-            <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
+            <p class="semi-bold">{{item.name}}</p>
+            <div *ngIf="item.achievements">
+              <p *ngFor="let achievement of item.achievements"> {{achievement}}</p>
+            </div>
           </div>
         </li>
       </ul>
     </div>
-    <div class="resume_item resume_education">
+    <div class="resume_item resume_education" *ngIf="this.profile.Educations">
       <div class="title">
         <p class="bold">Education</p>
       </div>
       <ul>
-        <li>
-          <div class="date">2010 - 2013</div>
+        <li *ngFor="let item of profile.Educations;">
+          <div class="date">
+            {{item.from}} - {{item.to}}</div>
           <div class="info">
-            <p class="semi-bold">Web Designing (Texas University)</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-          </div>
-        </li>
-        <li>
-          <div class="date">2000 - 2010</div>
-          <div class="info">
-            <p class="semi-bold">Texas International School</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
+            <p class="semi-bold">{{item.name}}</p>
+            <div *ngIf="item.achievements">
+              <p *ngFor="let achievement of item.achievements"> {{achievement}}</p>
+            </div>
           </div>
         </li>
       </ul>
