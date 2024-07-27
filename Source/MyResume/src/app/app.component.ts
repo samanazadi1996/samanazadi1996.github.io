@@ -38,14 +38,24 @@ export class AppComponent implements OnInit {
         from: "2019", to: "2021",
         name: "NikRastin Parsa",
         achievements: [
-          "test 1",
-          "test 2",
+          "Development of Bycheck software (Bycheck.ir)",
+          "Development and implementation of in-house applications using ASP.NET MVC and ASP.NET Core frameworks.",
+          "Decomposing monolithic projects into independent microservices to improve scalability and maintainability.",
+          "Containerizing microservices using Docker to ensure execution environment consistency throughout development and production stages.",
+          "Implementing and configuring ELK for centralized, high-performance log storage and search.",
         ]
       }, {
         from: "2021", to: "2024",
         name: "Sam Sirvan System",
         achievements: [
-
+          "Design and development of a comprehensive tax management system for taxpayers.",
+          "Design and implementation of a tax switch to enhance communication and coordination between different tax systems.",
+          "Development of an online store software with all necessary features for managing sales and products.",
+          "Writing and executing unit tests, functional tests, and load tests to ensure software quality.",
+          "Containerizing projects using Docker to improve scalability and better manage development and production environments.",
+          "Setting up and implementing CI/CD systems to automate development, testing, and software release processes.",
+          
+          
         ]
       }
 

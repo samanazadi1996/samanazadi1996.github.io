@@ -199,7 +199,7 @@ body {
     top: 14px;
     left: -21px;
     width: 2px;
-    height: 115px;
+    height: 100%;
     background: #0bb5f4;
 }
 
@@ -233,4 +233,8 @@ body {
 
 .resume .resume_right .resume_hobby ul li:last-child:before {
     display: none;
+}
+
+.mb-10{
+    margin-bottom: 10;
 }

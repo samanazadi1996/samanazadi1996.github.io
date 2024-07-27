@@ -109,7 +109,7 @@
       </div>
       <p>{{profile.Desc}}</p>
     </div>
-    <div class="resume_item resume_work">
+    <div class="resume_item resume_work" *ngIf="this.profile.workExperiences">
       <div class="title">
         <p class="bold">Work Experience</p>
       </div>
@@ -120,7 +120,7 @@
           <div class="info">
             <p class="semi-bold">{{item.name}}</p>
             <div *ngIf="item.achievements">
-              <p *ngFor="let achievement of item.achievements"> {{achievement}}</p>
+              <p class="mb-10" *ngFor="let achievement of item.achievements"> - {{achievement}}</p>
             </div>
           </div>
         </li>
