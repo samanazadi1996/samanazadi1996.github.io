@@ -1,5 +1,17 @@
 <a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 
+<button
+  class="theme-toggle theme-toggle--floating"
+  type="button"
+  (click)="toggleTheme()"
+  [attr.aria-label]="isDarkTheme ? 'فعال کردن حالت روشن' : 'فعال کردن حالت تیره'"
+  [attr.title]="isDarkTheme ? 'حالت روشن' : 'حالت تیره'"
+>
+  <svg class="icon" aria-hidden="true">
+    <use [attr.href]="isDarkTheme ? '#icon-sun' : '#icon-moon'"></use>
+  </svg>
+</button>
+
 <main class="site-shell">
   <header class="hero" id="top">
     <div class="hero__content">
@@ -10,22 +22,7 @@
           <svg class="icon" aria-hidden="true"><use href="#icon-briefcase"></use></svg>
           مشاهده سوابق
         </a>
-        <button class="button button--ghost" type="button" (click)="printResume()">
-          <svg class="icon" aria-hidden="true"><use href="#icon-print"></use></svg>
-          چاپ یا ذخیره PDF
-        </button>
-        <button
-          class="button button--ghost theme-toggle"
-          type="button"
-          (click)="toggleTheme()"
-          [attr.aria-label]="isDarkTheme ? 'فعال کردن حالت روشن' : 'فعال کردن حالت تیره'"
-          [attr.title]="isDarkTheme ? 'حالت روشن' : 'حالت تیره'"
-        >
-          <svg class="icon" aria-hidden="true">
-            <use [attr.href]="isDarkTheme ? '#icon-sun' : '#icon-moon'"></use>
-          </svg>
-          {{ isDarkTheme ? 'حالت روشن' : 'حالت تیره' }}
-        </button>
+
       </div>
     </div>
 

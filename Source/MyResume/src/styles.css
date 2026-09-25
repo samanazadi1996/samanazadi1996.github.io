@@ -262,8 +262,34 @@ img {
   background: rgba(255, 255, 255, 0.12);
 }
 
-.theme-toggle {
-  min-width: 126px;
+.theme-toggle--floating {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 1000;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  min-width: 0;
+  padding: 0;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--primary);
+  box-shadow: 0 8px 24px rgba(26, 44, 76, 0.14);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.theme-toggle--floating:hover {
+  background: var(--surface-soft);
+  transform: translateY(-2px);
+}
+
+.theme-toggle--floating .icon {
+  font-size: 1rem;
 }
 
 .hero__visual {
@@ -1015,6 +1041,13 @@ img {
     width: 100%;
   }
 
+  .theme-toggle--floating {
+    top: 12px;
+    left: 12px;
+    width: 42px;
+    height: 42px;
+  }
+
   .sidebar {
     grid-template-columns: 1fr;
   }
@@ -1218,6 +1251,7 @@ img {
   }
 
   .skip-link,
+  .theme-toggle--floating,
   .hero__actions,
   .contact-item__arrow,
   .social-list > a > .icon,

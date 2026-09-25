@@ -60,6 +60,15 @@ export class AppComponent {
   readonly title = 'رزومه سامان آزادی';
   readonly name = 'سامان آزادی';
   readonly role = 'برنامه‌نویس دات‌نت';
+
+  get downloadFileName(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = `${today.getMonth() + 1}`.padStart(2, '0');
+    const day = `${today.getDate()}`.padStart(2, '0');
+    return `Saman-Azadi-Resume-${year}-${month}-${day}.pdf`;
+  }
+
   readonly avatarUrl = 'https://avatars.githubusercontent.com/u/60857846?v=4';
   readonly summary =
     'برنامه‌نویس دات‌نت با تجربه در طراحی، توسعه و نگهداری سامانه‌های سازمانی، مالی و خدماتی. تمرکز اصلی من بر توسعه بک‌اند با ASP.NET Core، طراحی و بهینه‌سازی پایگاه داده و پیاده‌سازی معماری‌های مبتنی بر میکروسرویس است؛ در کنار آن، تجربه توسعه فرانت‌اند با Angular را نیز دارم. با استفاده از Docker، CI/CD و ابزارهای مرتبط با عملیات، بر پایداری، مقیاس‌پذیری و کیفیت محصولات نرم‌افزاری تمرکز می‌کنم. معتقدم همکاری مؤثر، ارتباط شفاف و یادگیری مستمر، کلید موفقیت در پروژه‌های تیمی است.';
@@ -305,7 +314,4 @@ export class AppComponent {
     }
   }
 
-  printResume(): void {
-    window.print();
-  }
 }
