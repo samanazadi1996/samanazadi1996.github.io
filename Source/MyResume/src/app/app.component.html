@@ -1,159 +1,249 @@
-<div class="resume">
-  <div class="resume_left">
-    <div class="resume_profile">
-      <img src="{{profile.avatar_url}}" alt="profile_pic">
-    </div>
-    <div class="resume_content">
-      <div class="resume_item resume_info">
-        <div class="title">
-          <p class="bold">{{profile.name}}</p>
-          <p class="regular">{{profile.bio}}</p>
-        </div>
-        <ul>
-          <li>
-            <div class="icon">
-              <i class="fas fa-map-signs"></i>
-            </div>
-            <div class="data">
-              {{profile.location}}
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fas fa-mobile-alt"></i>
-            </div>
-            <div class="data">
-              {{profile.phoneNumber}}
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="data">
-              {{profile.email}}
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fab fa-weebly"></i>
-            </div>
-            <div class="data">
-              {{profile.blog}}
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="resume_item resume_skills">
-        <div class="title">
-          <p class="bold">skill's</p>
-        </div>
-        <div>
-          <div>
-            <div class="skill skill_name"  *ngFor="let item of profile.skills">
-              {{item.name}}
-            </div>
-          </div>
+<a class="skip-link" href="#main-content">رفتن به محتوای اصلی</a>
 
+<main class="site-shell">
+  <header class="hero" id="top">
+    <div class="hero__content">
+      <h1>سلام، من <span>{{ name }}</span> هستم</h1>
+
+      <div class="hero__actions">
+        <a class="button button--primary" href="#experience">
+          <svg class="icon" aria-hidden="true"><use href="#icon-briefcase"></use></svg>
+          مشاهده سوابق
+        </a>
+        <button class="button button--ghost" type="button" (click)="printResume()">
+          <svg class="icon" aria-hidden="true"><use href="#icon-print"></use></svg>
+          چاپ یا ذخیره PDF
+        </button>
+        <button
+          class="button button--ghost theme-toggle"
+          type="button"
+          (click)="toggleTheme()"
+          [attr.aria-label]="isDarkTheme ? 'فعال کردن حالت روشن' : 'فعال کردن حالت تیره'"
+          [attr.title]="isDarkTheme ? 'حالت روشن' : 'حالت تیره'"
+        >
+          <svg class="icon" aria-hidden="true">
+            <use [attr.href]="isDarkTheme ? '#icon-sun' : '#icon-moon'"></use>
+          </svg>
+          {{ isDarkTheme ? 'حالت روشن' : 'حالت تیره' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <div class="portrait">
+        <div class="portrait__frame">
+          <img [src]="avatarUrl" [alt]="'تصویر پروفایل ' + name" width="240" height="240" />
         </div>
       </div>
-      <div class="resume_item resume_social">
-        <div class="title">
-          <p class="bold">Social</p>
+    </div>
+  </header>
+
+  <div class="resume-layout">
+    <aside class="sidebar" id="contact" aria-label="اطلاعات تماس و خلاصه رزومه">
+      <section class="side-card contact-card">
+        <div class="side-card__heading">
+          <span class="side-card__icon"><svg class="icon" aria-hidden="true"><use href="#icon-address-book"></use></svg></span>
+          <h2>راه‌های ارتباطی</h2>
         </div>
-        <ul>
-          <li>
-            <div class="icon">
-              <i class="fab fa-facebook-square"></i>
+        <div class="contact-list">
+          @for (contact of contacts; track contact.href) {
+            <a
+              class="contact-item"
+              [href]="contact.href"
+              [attr.target]="contact.external ? '_blank' : null"
+              [attr.rel]="contact.external ? 'noopener noreferrer' : null"
+            >
+              <span class="contact-item__icon"><svg class="icon" aria-hidden="true"><use [attr.href]="'#icon-' + contact.icon"></use></svg></span>
+              <span class="contact-item__content">
+                <small>{{ contact.label }}</small>
+                <strong
+                  [attr.dir]="contact.label === 'ایمیل' || contact.label === 'تلفن' ? 'ltr' : null"
+                >{{ contact.value }}</strong>
+              </span>
+              <svg class="icon contact-item__arrow" aria-hidden="true"><use href="#icon-external-link"></use></svg>
+            </a>
+          }
+        </div>
+      </section>
+
+      <section class="side-card">
+        <div class="side-card__heading">
+          <span class="side-card__icon"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg></span>
+          <h2>اطلاعات شخصی</h2>
+        </div>
+        <dl class="details-list">
+          @for (detail of personalDetails; track detail.label) {
+            <div>
+              <dt><svg class="icon" aria-hidden="true"><use [attr.href]="'#icon-' + detail.icon"></use></svg>{{ detail.label }}</dt>
+              <dd>{{ detail.value }}</dd>
             </div>
-            <div class="data">
-              <p class="semi-bold">Facebook</p>
-              <p>Samanfacebook</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fab fa-twitter-square"></i>
-            </div>
-            <div class="data">
-              <p class="semi-bold">Twitter</p>
-              <p>Samantwitter</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fab fa-youtube"></i>
-            </div>
-            <div class="data">
-              <p class="semi-bold">Youtube</p>
-              <p>Samanyoutube</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon">
-              <i class="fab fa-linkedin"></i>
-            </div>
-            <div class="data">
-              <p class="semi-bold">Linkedin</p>
-              <p>Samanlinkedin</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="resume_right">
-    <div class="resume_item resume_about">
-      <div class="title">
-        <p class="bold">About us</p>
-      </div>
-      <p>{{profile.Desc}}</p>
-    </div>
-    <div class="resume_item resume_work" *ngIf="this.profile.workExperiences">
-      <div class="title">
-        <p class="bold">Work Experience</p>
-      </div>
-      <ul>
-        <li *ngFor="let item of profile.workExperiences;">
-          <div class="date">
-            {{item.from}} - {{item.to}}</div>
-          <div class="info">
-            <p class="semi-bold">{{item.name}}</p>
-            <div *ngIf="item.achievements">
-              <p class="mb-10" *ngFor="let achievement of item.achievements"> - {{achievement}}</p>
-            </div>
+          }
+        </dl>
+      </section>
+
+      <section class="side-card">
+        <div class="side-card__heading">
+          <span class="side-card__icon"><svg class="icon" aria-hidden="true"><use href="#icon-chart"></use></svg></span>
+          <h2>مهارت‌ها</h2>
+        </div>
+        <div class="skills-list">
+          @for (skill of skills; track skill.name) {
+            <span class="skill-chip">{{ skill.name }}</span>
+          }
+        </div>
+      </section>
+
+      <section class="side-card language-card">
+        <div class="side-card__heading">
+          <span class="side-card__icon"><svg class="icon" aria-hidden="true"><use href="#icon-language"></use></svg></span>
+          <h2>زبان</h2>
+        </div>
+        <div class="language-item">
+          <div class="language-item__flag">EN</div>
+          <div>
+            <strong>انگلیسی</strong>
+            <span>سطح متوسط</span>
           </div>
-        </li>
-      </ul>
-    </div>
-    <div class="resume_item resume_education" *ngIf="this.profile.Educations">
-      <div class="title">
-        <p class="bold">Education</p>
-      </div>
-      <ul>
-        <li *ngFor="let item of profile.Educations;">
-          <div class="date">
-            {{item.from}} - {{item.to}}</div>
-          <div class="info">
-            <p class="semi-bold">{{item.name}}</p>
-            <div *ngIf="item.achievements">
-              <p *ngFor="let achievement of item.achievements"> {{achievement}}</p>
-            </div>
+        </div>
+      </section>
+
+      <section class="side-card social-card">
+        <div class="side-card__heading">
+          <span class="side-card__icon"><svg class="icon" aria-hidden="true"><use href="#icon-code-branch"></use></svg></span>
+          <h2>شبکه‌های تخصصی</h2>
+        </div>
+        <div class="social-list">
+          @for (social of socialLinks; track social.url) {
+            <a [href]="social.url" target="_blank" rel="noopener noreferrer">
+              <span><svg class="icon" aria-hidden="true"><use [attr.href]="'#icon-' + social.icon"></use></svg></span>
+              <div>
+                <strong>{{ social.label }}</strong>
+                <small>{{ social.username }}</small>
+              </div>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-left"></use></svg>
+            </a>
+          }
+        </div>
+      </section>
+    </aside>
+
+    <article class="main-content" id="main-content">
+      <section class="resume-section" id="about">
+        <div class="section-heading">
+          <div>
+            <span class="section-heading__eyebrow">نمای کلی</span>
+            <h2>درباره من</h2>
           </div>
-        </li>
-      </ul>
-    </div>
-    <div class="resume_item resume_hobby">
-      <div class="title">
-        <p class="bold">Hobby</p>
-      </div>
-      <ul>
-        <li><i class="fas fa-book"></i></li>
-        <li><i class="fas fa-gamepad"></i></li>
-        <li><i class="fas fa-music"></i></li>
-        <li><i class="fab fa-pagelines"></i></li>
-      </ul>
-    </div>
+          <span class="section-heading__icon"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg></span>
+        </div>
+        <p class="about-text">{{ summary }}</p>
+        <div class="focus-grid">
+          @for (area of focusAreas; track area) {
+            <div class="focus-item">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+              <span>{{ area }}</span>
+            </div>
+          }
+        </div>
+      </section>
+
+      <section class="resume-section" id="experience">
+        <div class="section-heading">
+          <div>
+            <span class="section-heading__eyebrow">مسیر حرفه‌ای</span>
+            <h2>سوابق شغلی</h2>
+          </div>
+          <span class="section-heading__icon"><svg class="icon" aria-hidden="true"><use href="#icon-briefcase"></use></svg></span>
+        </div>
+
+        <div class="timeline">
+          @for (experience of experiences; track experience.company) {
+            <article class="timeline-item">
+              <div class="timeline-item__marker"><svg class="icon" aria-hidden="true"><use href="#icon-briefcase"></use></svg></div>
+              <div class="timeline-item__card">
+                <div class="timeline-item__header">
+                  <div>
+                    <h3>{{ experience.role }}</h3>
+                    <p class="company-name">{{ experience.company }}</p>
+                  </div>
+                  <span class="period">{{ experience.period }}</span>
+                </div>
+                <div class="timeline-item__location">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>
+                  {{ experience.location }}
+                </div>
+                <ul class="achievement-list">
+                  @for (achievement of experience.achievements; track achievement) {
+                    <li>{{ achievement }}</li>
+                  }
+                </ul>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+
+      <section class="resume-section" id="projects">
+        <div class="section-heading">
+          <div>
+            <span class="section-heading__eyebrow">نمونه‌کارها</span>
+            <h2>پروژه‌ها</h2>
+          </div>
+          <span class="section-heading__icon"><svg class="icon" aria-hidden="true"><use href="#icon-diagram"></use></svg></span>
+        </div>
+
+        <div class="project-grid">
+          @for (project of projects; track project.name) {
+            <a class="project-card" [href]="project.url" target="_blank" rel="noopener noreferrer">
+              <div class="project-card__top">
+                <span class="project-card__type">{{ project.type }}</span>
+                <span class="project-card__period">{{ project.period }}</span>
+              </div>
+              <h3>{{ project.name }}</h3>
+              <p>{{ project.description }}</p>
+              <div class="project-card__tags">
+                @for (tag of project.tags; track tag) {
+                  <span>{{ tag }}</span>
+                }
+              </div>
+              <div class="project-card__link">
+                <span>{{ project.urlLabel }}</span>
+                <svg class="icon" aria-hidden="true"><use href="#icon-external-link"></use></svg>
+              </div>
+            </a>
+          }
+        </div>
+      </section>
+
+      <section class="resume-section" id="courses">
+        <div class="section-heading">
+          <div>
+            <span class="section-heading__eyebrow">یادگیری مستمر</span>
+            <h2>دوره‌ها و گواهینامه‌ها</h2>
+          </div>
+          <span class="section-heading__icon"><svg class="icon" aria-hidden="true"><use href="#icon-certificate"></use></svg></span>
+        </div>
+
+        <div class="course-list">
+          @for (course of courses; track course.title) {
+            <a class="course-item" [href]="course.url" target="_blank" rel="noopener noreferrer">
+              <span class="course-item__icon"><svg class="icon" aria-hidden="true"><use href="#icon-graduation"></use></svg></span>
+              <div class="course-item__content">
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.institution }} · {{ course.period }}</p>
+              </div>
+              <svg class="icon course-item__arrow" aria-hidden="true"><use href="#icon-external-link"></use></svg>
+            </a>
+          }
+        </div>
+      </section>
+    </article>
   </div>
-</div>
-<router-outlet></router-outlet>
+
+  <footer class="simple-footer">
+    <a class="back-to-top" href="#top" aria-label="بازگشت به بالا">
+      <span>بازگشت به بالا</span>
+      <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
+    </a>
+  </footer>
+</main>

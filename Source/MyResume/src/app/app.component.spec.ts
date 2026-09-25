@@ -10,20 +10,37 @@ describe('AppComponent', () => {
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it(`should have the 'MyResume' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('MyResume');
-  });
-
-  it('should render title', () => {
+  it('should render the resume owner without the removed top role', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, MyResume');
+    const element = fixture.nativeElement as HTMLElement;
+
+    expect(element.querySelector('h1')?.textContent).toContain('سامان آزادی');
+    expect(element.querySelector('.eyebrow')).toBeNull();
+  });
+
+  it('should render all resume sections', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+
+    expect(element.querySelectorAll('.timeline-item').length).toBe(4);
+    expect(element.querySelectorAll('.project-card').length).toBe(5);
+    expect(element.querySelectorAll('.course-item').length).toBe(3);
+    expect(element.querySelector('.education-grid')).toBeNull();
+    expect(element.querySelector('.skills-list')?.textContent).not.toContain('٪');
+  });
+
+  it('should toggle between light and dark themes', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const initialTheme = app.isDarkTheme;
+
+    app.toggleTheme();
+    expect(app.isDarkTheme).toBe(!initialTheme);
+    app.toggleTheme();
   });
 });
