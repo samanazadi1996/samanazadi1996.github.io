@@ -145,6 +145,8 @@ export class AppComponent {
   ];
 
   readonly skills: readonly Skill[] = [
+    { name: 'Java' },
+    { name: 'Spring Boot' },
     { name: 'ASP.NET' },
     { name: 'C#' },
     { name: 'JavaScript' },
